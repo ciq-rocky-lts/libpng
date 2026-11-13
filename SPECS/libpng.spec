@@ -4,7 +4,7 @@ Summary:       A library of functions for manipulating PNG image format files
 Name:          libpng
 Epoch:         2
 Version:       1.6.37
-Release:       12.1%{?dist}
+Release:       12.2%{?dist}
 License:       zlib
 URL:           http://www.libpng.org/pub/png/
 
@@ -14,6 +14,26 @@ Patch0:        libpng-multilib.patch
 Patch1:        libpng-fix-arm-neon.patch
 # CVE-2025-64506 (amazon)
 Patch2: libpng-1.6.37-CVE-2025-64506.patch
+# CVE-2025-64720
+Patch3:        libpng-1.6.37-CVE-2025-64720.patch
+# CVE-2025-65018
+Patch4:        libpng-1.6.37-CVE-2025-65018.patch
+# CVE-2025-66293
+Patch5:        libpng-1.6.37-CVE-2025-66293.patch
+# CVE-2026-22695
+Patch6:        libpng-1.6.37-CVE-2026-22695.patch
+# CVE-2026-22801
+Patch7:        libpng-1.6.37-CVE-2026-22801.patch
+# CVE-2026-25646
+Patch8:        libpng-1.6.37-CVE-2026-25646.patch
+# CVE-2026-33636
+Patch9:        libpng-1.6.37-CVE-2026-33636.patch
+# CVE-2026-33416
+Patch10:        libpng-1.6.37-CVE-2026-33416.patch
+# CVE-2025-64505
+Patch11:        libpng-1.6.37-CVE-2025-64505.patch
+# CVE-2026-34757
+Patch12:        libpng-1.6.37-CVE-2026-34757.patch
 
 BuildRequires: gcc
 BuildRequires: zlib-devel
@@ -67,6 +87,16 @@ cp -p %{SOURCE1} .
 %patch0 -p1
 %patch1 -p1 -b .arm
 %patch2 -p1 -b .CVE-2025-64506
+%patch3 -p1 -b .CVE-2025-64720
+%patch4 -p1 -b .CVE-2025-65018
+%patch5 -p1 -b .CVE-2025-66293
+%patch6 -p1 -b .CVE-2026-22695
+%patch7 -p1 -b .CVE-2026-22801
+%patch8 -p1 -b .CVE-2026-25646
+%patch9 -p1 -b .CVE-2026-33636
+%patch10 -p1 -b .CVE-2026-33416
+%patch11 -p1 -b .CVE-2025-64505
+%patch12 -p1 -b .CVE-2026-34757
 
 %build
 autoreconf -vif
@@ -107,6 +137,18 @@ make check
 %{_bindir}/pngfix
 
 %changelog
+* Fri Jun 12 2026 Jason Rodriguez <jrodriguez@ciq.com> - 2:1.6.37-12.2
+- Fix CVE-2025-64720
+- Fix CVE-2025-65018
+- Fix CVE-2025-66293
+- Fix CVE-2026-22695
+- Fix CVE-2026-22801
+- Fix CVE-2026-25646
+- Fix CVE-2026-33636
+- Fix CVE-2026-33416
+- Fix CVE-2025-64505
+- Fix CVE-2026-34757
+
 * Fri Mar 20 2026 Max Spevack <max@ciq.com> - 1.6.37-12.1
 - Fix CVE-2025-64506
 
